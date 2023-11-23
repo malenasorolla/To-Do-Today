@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import swal from 'sweetalert';
+import { useState } from 'react';
 
 const TaskForm = ({ onAddTask }) => {
   const [newTask, setNewTask] = useState('');
@@ -7,13 +9,14 @@ const TaskForm = ({ onAddTask }) => {
     setNewTask(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (newTask.trim() !== '') {
-      onAddTask(newTask);
-      setNewTask('');
-    }
-  };
+ const handleSubmit = (e) => {
+   e.preventDefault();
+   if (newTask.trim() !== '') {
+     onAddTask(newTask);
+     setNewTask('');
+     swal('¡Cambio detectado!', 'Has agregado una tarea nueva.', 'info');
+   }
+ };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -28,3 +31,6 @@ const TaskForm = ({ onAddTask }) => {
 
 export default TaskForm;
 
+TaskForm.propTypes = {
+  onAddTask: PropTypes.func,
+};
