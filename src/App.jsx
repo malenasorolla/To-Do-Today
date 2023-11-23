@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import './App.css';
 import './reset.css';
-import TaskList from './components/TaskList';  
+import { useState } from 'react';
+import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
+import NavBar from './components/Navbar';
+import MyDay from './components/MyDay';
 
 function App() {
   // Almacena lista de tareas
@@ -11,7 +14,7 @@ function App() {
   const handleTaskComplete = (taskId) => {
     // Lógica para marcar la tarea como completada
     // Actualiza el estado de las tareas
-    const updatedTasks = tasks.map(task =>
+    const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
@@ -21,7 +24,7 @@ function App() {
   const handleTaskDelete = (taskId) => {
     // Lógica para eliminar la tarea
     // Actualiza el estado de las tareas
-    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(updatedTasks);
   };
 
@@ -39,12 +42,9 @@ function App() {
 
   return (
     <>
-      <div>HOLA</div>
-      <TaskList
-        tasks={tasks}
-        onTaskComplete={handleTaskComplete}
-        onTaskDelete={handleTaskDelete}
-      />
+      <NavBar></NavBar>
+      <MyDay></MyDay>
+      <TaskList tasks={tasks} onTaskComplete={handleTaskComplete} onTaskDelete={handleTaskDelete} />
       <TaskForm onAddTask={handleAddTask} />
     </>
   );
