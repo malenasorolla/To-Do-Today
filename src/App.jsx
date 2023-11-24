@@ -44,8 +44,8 @@ function App() {
     <>
       <NavBar></NavBar>
       <MyDay></MyDay>
-      <TaskList tasks={tasks} onTaskComplete={handleTaskComplete} onTaskDelete={handleTaskDelete} />
       <TaskForm onAddTask={handleAddTask} />
+      <TaskList tasks={tasks} onTaskComplete={handleTaskComplete} onTaskDelete={handleTaskDelete} />
     </>
   );
 }
