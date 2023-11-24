@@ -1,3 +1,25 @@
+import styled from 'styled-components';
+
+const MyDayWrapper = styled.div`
+  background-color: #5c5470;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20px;
+`;
+
+const Title = styled.h2`
+  font-size: 2rem;
+  color: #ff9130;
+  margin-bottom: 5px;
+`;
+
+const DateText = styled.p`
+  color: #ff5b22;
+  font-size: 1.5rem;
+  margin-top: 5px;
+`;
+
 const MyDay = () => {
   const date = new Date();
 
@@ -25,10 +47,10 @@ const MyDay = () => {
   const formattedDate = `${dayOfWeek}, ${dayOfMonth} de ${month} de ${year}`;
 
   return (
-    <div>
-      <h2>Mi día</h2>
-      <p>{formattedDate}</p>
-    </div>
+    <MyDayWrapper>
+      <Title>Mi día</Title>
+      <DateText>{formattedDate}</DateText>
+    </MyDayWrapper>
   );
 };
 
