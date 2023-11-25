@@ -1,14 +1,21 @@
 import './App.css';
 import './reset.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
 import NavBar from './components/Navbar';
 import MyDay from './components/MyDay';
 
 function App() {
+  const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
   // Almacena lista de tareas
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(storedTasks);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks])
+
 
   // Maneja tarea completada
   const handleTaskComplete = (taskId) => {
